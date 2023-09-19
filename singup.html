@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="singup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+TTl5y5v7oHp0W1dFjjB3jF/k4zg5O5eUn7zGS2CqX7o7SUI" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="containerpadre">
+        
+        <img class="logop" src="./img/logo chat gpt.png" alt="">
+        <h1 class="bienvenida">Create your account</h1>
+        <h4>Note that phone verification may be required for signup. Your number will only be used to verify your identity for security purposes.</h4>
+        <input id="email" class="email" type="email" placeholder="Email address" inputmode="email">
+        <button id="signup" class="continue">Continue</button>
+        <h1  class="dont">You have an account? <a href="./login.html">Log in</a>
+      
+    
+        </h1>
+        <img class="or" src="./img/or chat .png" alt="">    
+        <button class="redes"><img class="logotipos" src="./img/google.png" alt=""> Continuar con Google</button>
+<button class="redes2"><img class="logotipos" src="./img/microsoft.png" alt=""> Continuar con Microsoft Account</button>
+<button class="redes3"><img class="logotipos" src="./img/logotipo-de-apple.png" alt="">Continuar con Apple</button>
+
+    </div>
+</body>
+<script>
+document.getElementById("signup").addEventListener("click", function () {
+    const email = document.getElementById("email").value;
+
+    if (email.trim() === "") {
+        alert("Por favor, ingrese un correo.");
+        return;
+    }
+
+    if (!email.endsWith("@gmail.com")) {
+        alert("Solo se permiten correos con la terminación '@gmail.com'.");
+        return;
+    }
+
+
+    const registeredEmails = JSON.parse(localStorage.getItem("registeredEmails")) || [];
+
+    if (registeredEmails.includes(email)) {
+        alert("Este correo ya está registrado.");
+    } else {
+        registeredEmails.push(email);
+        localStorage.setItem("registeredEmails", JSON.stringify(registeredEmails));
+        alert("Registro exitoso!");
+    }
+});
+</script>
+</html>
